@@ -1,10 +1,12 @@
 import React from 'react'
-
+import { Container } from '@material-ui/core/';
 
 
 const Tvshow = () => {
     return (
-        <div>TVshow</div>
+        <Container maxWidth='md'>
+            <div>TVshow</div>
+        </Container>
     )
 }
 
