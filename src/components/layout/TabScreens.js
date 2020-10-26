@@ -15,9 +15,6 @@ const getStyles = makeStyles(theme => ({
         height: 48,
         backgroundColor: '#3f51b5',
     },
-    tapStyle: {
-      width: '33%'
-    },
     indicator: {
       backgroundColor: '#3f51b5',
     },
@@ -79,8 +76,8 @@ const TabScreens = () => {
                       aria-label="simple tabs example"
                     >
                         <Tab style={{width:'33.33%'}} label="Movie" {...a11yProps(0)} />
-                        <Tab style={{width:'33.33%'}} className={classes.tabStyle} label="Search" {...a11yProps(1)} />
-                        <Tab style={{width:'33.33%'}} className={classes.tabStyle} label="TVshow" {...a11yProps(2)} />
+                        <Tab style={{width:'33.33%'}} label="Search" {...a11yProps(1)} />
+                        <Tab style={{width:'33.33%'}} label="TVshow" {...a11yProps(2)} />
                     </Tabs>
                 </AppBar>
            </Container>

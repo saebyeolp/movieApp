@@ -12,6 +12,7 @@ class Search extends Component {
         super()
         this.state = {
             searchResults: [],
+            noData : false,
             isLoading: false,
             searchOpt: '',
             query: ''
@@ -21,13 +22,32 @@ class Search extends Component {
         this.handleSearchFetch = this.handleSearchFetch.bind(this);
     }
 
+    // fetchSearch= async (searchOpt, query) => {  
+    //     getSearch(searchOpt, query).then(
+    //         searchResults => {
+    //           this.setState({
+    //             searchResults: searchResults,
+    //             isLoading: false
+    //           })
+    //         },
+    //         error => {
+    //           throw error
+    //         })
+    // }
+
     fetchSearch= async (searchOpt, query) => {  
         getSearch(searchOpt, query).then(
             searchResults => {
-              this.setState({
-                searchResults: searchResults,
-                isLoading: false
-              })
+                if(!searchResults.length){
+                    this.setState({
+                      noData: true
+                    })
+                } else {
+                    this.setState({
+                        searchResults: searchResults,
+                        noData: false
+                      })
+                }
             },
             error => {
               throw error
@@ -52,7 +72,7 @@ class Search extends Component {
 
     render(){
         
-        const { searchResults, isLoading, searchOpt, query } = this.state
+        const { searchResults, isLoading, searchOpt, query, noData } = this.state
 
         return (
             <div style={{width: '100%', paddingBottom: 50}}>
@@ -62,6 +82,7 @@ class Search extends Component {
                         query={query}
                         searchResults={searchResults}
                         isLoading={isLoading}
+                        noData={noData}
                         handleChangeQuery={this.handleChangeQuery}
                         handleChangeOption={this.handleChangeOption}
                         handleSearchFetch={this.handleSearchFetch}
