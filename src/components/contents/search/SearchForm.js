@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles, FormControl, Select, MenuItem, Button, TextField } from '@material-ui/core/';
 import SearchIcon from '@material-ui/icons/Search';
 
+import SearchLists from './SearchLists'
 
 const getStyles = makeStyles(theme => ({
     optionBox: {
@@ -20,7 +21,6 @@ const getStyles = makeStyles(theme => ({
 }))
 
 
-
 const SearchForm = (props) => {
 
     const classes = getStyles()
@@ -34,10 +34,12 @@ const SearchForm = (props) => {
                     id="outlined-basic" 
                     label="Search..." 
                     variant="outlined" 
+                    onChange={props.handleChangeQuery}
                 />
 
                 <Select
                     defaultValue="None"
+                    onChange={props.handleChangeOption}
                     style={{width: 100, marginRight: 10}}
                 >
                     <MenuItem value="None">None</MenuItem>
@@ -45,7 +47,6 @@ const SearchForm = (props) => {
                     <MenuItem value="movie">movie</MenuItem>
                     <MenuItem value="multi">multi</MenuItem>
                 </Select>
-
                 <Button
                     variant="contained"
                     color="primary"
@@ -57,6 +58,23 @@ const SearchForm = (props) => {
 
             </FormControl>
 
+            <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+                    {
+                        props.searchResults.map((search, i) => {
+                            return (
+                                <SearchLists 
+                                    key={i}
+                                    title={search.title}
+                                    name={search.name}
+                                    release_date={search.release_date}
+                                    popularity={search.popularity}
+                                    overview={search.overview}
+                                    poster_path={search.poster_path}
+                                />
+                            )
+                        })
+                    }
+            </div>
         </div>
     )
 }
