@@ -21,8 +21,7 @@ class Search extends Component {
         this.handleSearchFetch = this.handleSearchFetch.bind(this);
     }
 
-    fetchSearch= async (searchOpt, query) => {
-        
+    fetchSearch= async (searchOpt, query) => {  
         getSearch(searchOpt, query).then(
             searchResults => {
               this.setState({
@@ -62,6 +61,7 @@ class Search extends Component {
                         searchOpt={searchOpt}
                         query={query}
                         searchResults={searchResults}
+                        isLoading={isLoading}
                         handleChangeQuery={this.handleChangeQuery}
                         handleChangeOption={this.handleChangeOption}
                         handleSearchFetch={this.handleSearchFetch}
