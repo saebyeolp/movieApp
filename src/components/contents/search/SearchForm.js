@@ -4,8 +4,9 @@ import SearchIcon from '@material-ui/icons/Search';
 
 /* import components */
 import SearchLists from './SearchLists'
-import Initiation from '../Initiation';
-import Noresult from '../Noresult';
+import Initiation from '../Initiation'
+import Noresult from '../Noresult'
+import Loading from '../Loading'
 
 
 const getStyles = makeStyles(theme => ({
@@ -65,6 +66,7 @@ const SearchForm = (props) => {
             <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
                 { props.noData === false && props.searchResults.length == 0 ? <Initiation /> :
                   props.noData === true ? <Noresult /> :
+                  props.isLoading ? <Loading /> : 
                   props.searchResults.map((search, i) => {
                     return (
                         <SearchLists 

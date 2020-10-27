@@ -6,6 +6,7 @@ import { getSearch } from '../../../service/api'
 import SearchForm from './SearchForm'
 
 
+
 class Search extends Component {
 
     constructor(){
@@ -22,20 +23,13 @@ class Search extends Component {
         this.handleSearchFetch = this.handleSearchFetch.bind(this);
     }
 
-    // fetchSearch= async (searchOpt, query) => {  
-    //     getSearch(searchOpt, query).then(
-    //         searchResults => {
-    //           this.setState({
-    //             searchResults: searchResults,
-    //             isLoading: false
-    //           })
-    //         },
-    //         error => {
-    //           throw error
-    //         })
-    // }
 
     fetchSearch= async (searchOpt, query) => {  
+
+        this.setState({
+            isLoading: true
+        })
+
         getSearch(searchOpt, query).then(
             searchResults => {
                 if(!searchResults.length){
@@ -45,6 +39,7 @@ class Search extends Component {
                 } else {
                     this.setState({
                         searchResults: searchResults,
+                        isLoading: false,
                         noData: false
                       })
                 }
