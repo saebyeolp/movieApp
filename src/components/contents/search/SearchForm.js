@@ -42,12 +42,11 @@ const SearchForm = (props) => {
                     onChange={props.handleChangeQuery}
                 />
                 <Select
-                    defaultValue="None"
+                    defaultValue="TV"
                     onChange={props.handleChangeOption}
                     style={{width: 100, marginRight: 10}}
                 >
-                    <MenuItem value="None">None</MenuItem>
-                    <MenuItem value="tv">TV</MenuItem>
+                    <MenuItem value="tv">tv</MenuItem>
                     <MenuItem value="movie">movie</MenuItem>
                     <MenuItem value="multi">multi</MenuItem>
                 </Select>

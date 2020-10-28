@@ -39,6 +39,8 @@ class Search extends Component {
                 } else {
                     this.setState({
                         searchResults: searchResults,
+                        query: query,
+                        searchOpt: searchOpt,
                         isLoading: false,
                         noData: false
                       })
@@ -69,8 +71,7 @@ class Search extends Component {
     handleSearchFetch = (e) => {
         e.preventDefault()
         this.setState({searchOpt: e.target.value, query: e.target.value})
-        this.fetchSearch(this.state.searchOpt, this.state.query);
-
+        this.fetchSearch(this.state.searchOpt, this.state.query)
     }
 
     render(){

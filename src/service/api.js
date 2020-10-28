@@ -10,8 +10,8 @@ export const getSearch = async (searchOpt, query) => {
   try {
     const response = await axios.get(url, {
       params: {
+        query: query,
         api_key: API_KEY,
-        query: query
       }
     })
     const searchResults = response.data.results
