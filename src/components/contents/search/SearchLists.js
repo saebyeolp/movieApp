@@ -18,7 +18,6 @@ const getStyles = makeStyles(theme => ({
         display: 'grid',
         gridTemplateColumns: '150px auto',
         paddingBottom: 10,
-        
     },
     moviePic: {
         width: 150,
@@ -32,6 +31,9 @@ const getStyles = makeStyles(theme => ({
         wordBreak: 'normal',
         paddingTop: 15,
         lineHeight: '140%'
+    },
+    spanTag: {
+        paddingRight: 10
     }
 }))
 
@@ -46,21 +48,23 @@ const SearchLists = (props) => {
 
             <div className={classes.moviePic}>
                 {
-                    props.poster_path == null ? <img src={`https://via.placeholder.com/150x225/cccccc/333333/?text=No Image`} alt="no image" /> : <img className={classes.posterImg} src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt={`poster image of ${props.title}`}/>
+                    props.poster_path == null ? <img src={`https://via.placeholder.com/150x225/cccccc/333333/?text=No Image`} alt="blank" /> : <img className={classes.posterImg} src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt={`${props.title}`}/>
                 }
             </div>
 
             <div className={classes.movieDetail}>
                 <div className={classes.listTitle}>
                     {
-                        props.title == null ? <Typography color='primary' variant='h5'>{props.name}</Typography> : <Typography color='primary' variant='h5'>{props.title}</Typography>
+                        props.title == null ? <Typography color='primary' variant='h5'>{props.name}</Typography> : 
+                        <Typography color='primary' variant='h5'>{props.title}</Typography>
                     }
                 </div>
                 <div style={{paddingTop:5, color:'#555'}}>
                     {
-                       props.release_date? <span style={{paddingRight: 10}}>Release Date : {props.release_date}</span> : ''
+                       props.release_date? <span className={classes.spanTag}>Release Date : {props.release_date}</span> : 
+                       <span className={classes.spanTag}>First Air Date : {props.first_air_date}</span> 
                     }  
-                    <span>Popularity : {props.popularity}</span>
+                    <span>/ Popularity : {props.popularity}</span>
                 </div>
                 <p className={classes.overView}>{props.overview}</p>
             </div>

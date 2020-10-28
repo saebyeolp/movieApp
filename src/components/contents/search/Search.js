@@ -23,7 +23,6 @@ class Search extends Component {
         this.handleSearchFetch = this.handleSearchFetch.bind(this);
     }
 
-
     fetchSearch= async (searchOpt, query) => {  
 
         this.setState({

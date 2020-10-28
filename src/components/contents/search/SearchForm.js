@@ -64,7 +64,7 @@ const SearchForm = (props) => {
             </FormControl>
 
             <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-                { props.noData === false && props.searchResults.length == 0 ? <Initiation /> :
+                { props.noData === false && props.searchResults.length === 0 ? <Initiation /> :
                   props.noData === true ? <Noresult /> :
                   props.isLoading ? <Loading /> : 
                   props.searchResults.map((search, i) => {
@@ -74,14 +74,13 @@ const SearchForm = (props) => {
                             title={search.title}
                             name={search.name}
                             release_date={search.release_date}
+                            first_air_date={search.first_air_date}
                             popularity={search.popularity}
                             overview={search.overview}
                             poster_path={search.poster_path}
                         />
                     )
                   })
-
-
                 }
             </div>
         </div>
