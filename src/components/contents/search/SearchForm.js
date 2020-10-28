@@ -41,7 +41,6 @@ const SearchForm = (props) => {
                     variant="outlined" 
                     onChange={props.handleChangeQuery}
                 />
-
                 <Select
                     defaultValue="None"
                     onChange={props.handleChangeOption}

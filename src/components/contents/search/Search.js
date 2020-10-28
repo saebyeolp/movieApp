@@ -18,9 +18,10 @@ class Search extends Component {
             searchOpt: '',
             query: ''
         }
-        this.handleChangeQuery = this.handleChangeQuery.bind(this);
-        this.handleChangeOption = this.handleChangeOption.bind(this);
-        this.handleSearchFetch = this.handleSearchFetch.bind(this);
+        this.handleChangeQuery = this.handleChangeQuery.bind(this)
+        this.handleChangeOption = this.handleChangeOption.bind(this)
+        this.handleSearchFetch = this.handleSearchFetch.bind(this)
+        this.handleClear = this.handleClear.bind(this)
     }
 
     fetchSearch= async (searchOpt, query) => {  
@@ -48,20 +49,28 @@ class Search extends Component {
             })
     }
 
+    handleClear = () => {
+        this.setState({
+            query: '',
+            searchOpt: ''
+        })
+    }
+
     handleChangeQuery = (e) => {
         e.preventDefault()
-        this.setState({ ...this.state, query: e.target.value })
+        this.setState({ ...this.state, query: e.target.value})
     }
 
     handleChangeOption = (e) => {
         e.preventDefault()
-        this.setState({ ...this.state, searchOpt: e.target.value })
+        this.setState({ ...this.state, searchOpt: e.target.value})
     }
 
     handleSearchFetch = (e) => {
         e.preventDefault()
         this.setState({searchOpt: e.target.value, query: e.target.value})
         this.fetchSearch(this.state.searchOpt, this.state.query);
+
     }
 
     render(){
