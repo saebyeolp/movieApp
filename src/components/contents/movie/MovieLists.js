@@ -32,12 +32,12 @@ const getStyles = makeStyles(theme => ({
 }))
 
 
-const SearchLists = (props) => {
+
+const MovieLists = (props) => {
 
     const classes = getStyles()
 
     return (
-
         <div className={classes.listBox}>
 
             <div className={classes.listPic}>
@@ -49,16 +49,10 @@ const SearchLists = (props) => {
 
             <div className={classes.listDetail}>
                 <div className={classes.listTitle}>
-                    {
-                        props.title == null ? <Typography color='primary' variant='h5'>{props.name}</Typography> : 
-                        <Typography color='primary' variant='h5'>{props.title}</Typography>
-                    }
+                    <Typography color='primary' variant='h5'>{props.title}</Typography>
                 </div>
                 <div style={{paddingTop:5, color:'#555'}}>
-                    {
-                       props.release_date? <span className={classes.spanTag}>Release Date : {props.release_date}</span> : 
-                       <span className={classes.spanTag}>First Air Date : {props.first_air_date}</span> 
-                    }  
+                    <span className={classes.spanTag}>Release Date : {props.release_date}</span> 
                     <span>/ Popularity : {props.popularity}</span>
                 </div>
                 <p className={classes.overView}>{props.overview}</p>
@@ -67,4 +61,4 @@ const SearchLists = (props) => {
     )
 }
 
-export default SearchLists
+export default MovieLists

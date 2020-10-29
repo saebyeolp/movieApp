@@ -13,15 +13,14 @@ class Search extends Component {
         super()
         this.state = {
             searchResults: [],
-            noData : false,
             isLoading: false,
-            searchOpt: '',
-            query: ''
+            input: true,
+            searchOpt: 'tv',
+            query: '',
         }
         this.handleChangeQuery = this.handleChangeQuery.bind(this)
         this.handleChangeOption = this.handleChangeOption.bind(this)
         this.handleSearchFetch = this.handleSearchFetch.bind(this)
-        this.handleClear = this.handleClear.bind(this)
     }
 
     fetchSearch= async (searchOpt, query) => {  
@@ -32,30 +31,17 @@ class Search extends Component {
 
         getSearch(searchOpt, query).then(
             searchResults => {
-                if(!searchResults.length){
-                    this.setState({
-                      noData: true
+                this.setState({
+                    searchResults: searchResults,
+                    query: query,
+                    input: false,
+                    searchOpt: searchOpt,
+                    isLoading: false,
                     })
-                } else {
-                    this.setState({
-                        searchResults: searchResults,
-                        query: query,
-                        searchOpt: searchOpt,
-                        isLoading: false,
-                        noData: false
-                      })
-                }
             },
             error => {
               throw error
             })
-    }
-
-    handleClear = () => {
-        this.setState({
-            query: '',
-            searchOpt: ''
-        })
     }
 
     handleChangeQuery = (e) => {
@@ -76,7 +62,7 @@ class Search extends Component {
 
     render(){
         
-        const { searchResults, isLoading, searchOpt, query, noData } = this.state
+        const { searchResults, isLoading, searchOpt, query, input } = this.state
 
         return (
             <div style={{width: '100%', paddingBottom: 50}}>
@@ -86,7 +72,7 @@ class Search extends Component {
                         query={query}
                         searchResults={searchResults}
                         isLoading={isLoading}
-                        noData={noData}
+                        input={input}
                         handleChangeQuery={this.handleChangeQuery}
                         handleChangeOption={this.handleChangeOption}
                         handleSearchFetch={this.handleSearchFetch}

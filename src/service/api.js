@@ -1,7 +1,26 @@
 import axios from 'axios'
 import { API_KEY, BASE_URL } from '../config/api_config'
 
+export const getMovie = async option => {
+  
+  const url = `${BASE_URL}movie/${option}`
 
+  try {
+    const response = await axios.get(url, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+        page: 1
+      }
+    })
+    const movies = response.data.results
+    console.log(movies)
+    return movies
+    
+  } catch (error) {
+    throw error
+  }
+}
 
 export const getSearch = async (searchOpt, query) => {
   
@@ -12,6 +31,8 @@ export const getSearch = async (searchOpt, query) => {
       params: {
         query: query,
         api_key: API_KEY,
+        language: 'en-US',
+        page: 1
       }
     })
     const searchResults = response.data.results
