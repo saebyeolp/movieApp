@@ -18,6 +18,14 @@ const getStyles = makeStyles(theme => ({
     button: {
         display: 'inline-block',
         width: '10%'
+    },
+    listBox: {
+        width:'100%', 
+        paddingTop:30, 
+        paddingBottom: 60, 
+        display:'flex', 
+        flexWrap: 'wrap', 
+        justifyContent: 'center'
     }
 }))
 
@@ -25,20 +33,30 @@ const MovieOption = (props) => {
 
     const classes = getStyles()
 
+    const options =  [
+        {value: 'now_playing'},
+        {value: 'popular'},
+        {value: 'top_rated'},
+        {value: 'upcoming'}
+    ] 
+
+    const optionItems = options.map((option) =>
+        <option value={option.value}>{option.value}</option>
+    );
+
     return (
         <div className={classes.optionBox}>
             <FormControl variant="outlined" className={classes.formControl}>
 
                 <Select
+                    native
                     defaultValue="now_playing"
                     onChange={props.handleChangeOption}
                     style={{width: 270, marginRight: 10}}
                 >
-                    <MenuItem value="now_playing">now-playing</MenuItem>
-                    <MenuItem value="popular">popular</MenuItem>
-                    <MenuItem value="top_rated">top-rated</MenuItem>
-                    <MenuItem value="upcoming">upcoming</MenuItem>
+                    {optionItems}
                 </Select>
+
                 <Button
                     variant="contained"
                     color="primary"
@@ -50,7 +68,7 @@ const MovieOption = (props) => {
 
             </FormControl>
 
-            <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+            <div className={classes.listBox}>
                     {   props.isLoading ? <Loading /> :
                         props.movies.map((movie, i) => {
                             return (

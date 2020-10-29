@@ -12,8 +12,8 @@ class Movie extends Component {
         super()
         this.state = {
             movies: [],
-            isLoading: false,
-            option: 'now_playing'
+            option: 'now_playing',
+            isLoading: false
         }
       }
 
@@ -43,13 +43,12 @@ class Movie extends Component {
         e.preventDefault()
         this.setState({ option: e.target.value })
     }
-
+    
     handleMovieFetch = (e) => {
         e.preventDefault()
-        this.setState({option:e.target.value})
+        this.setState({ option:e.target.value })
         this.fetchMovie(this.state.option);
     }
-
 
     render() {
 
@@ -58,10 +57,10 @@ class Movie extends Component {
         return (
             <Container maxWidth='md'>
                 <MovieForm 
-                    handleChangeOption={this.handleChangeOption}
-                    option={option}
                     movies={movies}
+                    option={option}
                     isLoading={isLoading}
+                    handleChangeOption={this.handleChangeOption}
                     handleMovieFetch={this.handleMovieFetch}
                 />
             </Container>

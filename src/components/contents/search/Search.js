@@ -13,10 +13,10 @@ class Search extends Component {
         super()
         this.state = {
             searchResults: [],
-            isLoading: false,
-            input: true,
             searchOpt: 'tv',
             query: '',
+            isLoading: false,
+            input: true
         }
         this.handleChangeQuery = this.handleChangeQuery.bind(this)
         this.handleChangeOption = this.handleChangeOption.bind(this)
@@ -62,15 +62,15 @@ class Search extends Component {
 
     render(){
         
-        const { searchResults, isLoading, searchOpt, query, input } = this.state
+        const { searchResults, searchOpt, query, isLoading, input } = this.state
 
         return (
             <div style={{width: '100%', paddingBottom: 50}}>
                <Container maxWidth='md'>
                     <SearchForm 
+                        searchResults={searchResults}
                         searchOpt={searchOpt}
                         query={query}
-                        searchResults={searchResults}
                         isLoading={isLoading}
                         input={input}
                         handleChangeQuery={this.handleChangeQuery}

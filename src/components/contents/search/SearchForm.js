@@ -71,9 +71,10 @@ const SearchForm = (props) => {
             </FormControl>
 
             <div className={classes.listBox}>
-               {  props.input ? <Noquery /> :
-                  props.isLoading ? <Loading /> :
-                  props.searchResults.length === 0 ? <Noresult /> :
+               {  !props.query && !props.isLoading ? <Noquery /> : 
+                  props.query && props.input ? <Initiation /> : 
+                  !props.query && props.isLoading ? <Loading /> :
+                  props.query && props.searchResults.length === 0 ? <Noresult /> :
                   props.searchResults.map((search, i) => {
                     return (
                         <SearchLists 
@@ -90,28 +91,6 @@ const SearchForm = (props) => {
                   })
                 }
             </div>
-
-            {/* <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-               {  props.query.length === 0 ? <Noquery /> :
-                  props && props.query && props.query.length > 1 ? <Initiation /> :
-                  props.isLoading ? <Loading /> :
-                  props.query.length > 1 && props.searchResults.length === 0 ? <Noresult /> :
-                  props.searchResults.map((search, i) => {
-                    return (
-                        <SearchLists 
-                            key={i}
-                            title={search.title}
-                            name={search.name}
-                            release_date={search.release_date}
-                            first_air_date={search.first_air_date}
-                            popularity={search.popularity}
-                            overview={search.overview}
-                            poster_path={search.poster_path}
-                        />
-                    )
-                  })
-                }
-            </div> */}
 
         </div>
     )
