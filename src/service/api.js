@@ -43,4 +43,26 @@ export const getSearch = async (searchOpt, query) => {
     throw error
   }
 }
+
+export const getTV = async option => {
+  
+  const url = `${BASE_URL}tv/${option}`
+
+  try {
+    const response = await axios.get(url, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+        page: 1
+      }
+    })
+    const tvs = response.data.results
+    console.log(tvs)
+    return tvs
+    
+  } catch (error) {
+    throw error
+  }
+}
+  
   

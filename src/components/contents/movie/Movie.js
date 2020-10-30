@@ -13,7 +13,7 @@ class Movie extends Component {
         this.state = {
             movies: [],
             option: 'now_playing',
-            isLoading: false
+            isLoading: false,
         }
       }
 
@@ -52,7 +52,7 @@ class Movie extends Component {
 
     render() {
 
-        const { movies, isLoading, option } = this.state
+        const { movies, isLoading, option, page } = this.state
         
         return (
             <Container maxWidth='md'>
@@ -63,6 +63,7 @@ class Movie extends Component {
                     handleChangeOption={this.handleChangeOption}
                     handleMovieFetch={this.handleMovieFetch}
                 />
+
             </Container>
         )
     }
