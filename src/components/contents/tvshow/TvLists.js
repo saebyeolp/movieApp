@@ -1,25 +1,13 @@
 import React from 'react'
-import { makeStyles, Typography } from '@material-ui/core/';
+import { makeStyles, Grid, Typography } from '@material-ui/core/';
+import bgImg from './../../../img/noImg.jpg'
 
 const getStyles = makeStyles(theme => ({
     listBox: {
-        width: '100%',
-        height: 'auto',
-        overflow: 'hidden',
-        display: 'grid',
-        gridTemplateColumns: '150px auto',
-        paddingBottom: 10,
+        marginBottom: 10
     },
     posterImg: {
         maxWidth: '100%',
-    },
-    listPic: {
-        width: 150,
-    },
-    listDetail: {
-        boxSizing: 'border-box',
-        padding: 30,
-        paddingTop: 0
     },
     overView: {
         wordBreak: 'normal',
@@ -28,6 +16,12 @@ const getStyles = makeStyles(theme => ({
     },
     spanTag: {
         paddingRight: 10
+    },
+    noImg: {
+        width: '100%',
+        height: '100%',
+        backgroundImage: `url(${bgImg})`,
+        backgroundPosition: 'center'       
     }
 }))
 
@@ -37,16 +31,16 @@ const TvLists = (props) => {
     const classes = getStyles()
 
     return (
-        <div className={classes.listBox}>
+        <Grid container spacing={3} className={classes.listBox}>
 
-            <div className={classes.listPic}>
+            <Grid item xs={12} sm={2}>
                 {
-                    props.poster_path == null ? <img src={`https://via.placeholder.com/150x225/cccccc/333333/?text=No Image`} alt="blank" /> : 
+                    props.poster_path == null ? <div className='noImg'></div> : 
                     <img className={classes.posterImg} src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt={`${props.title}`}/>
                 }
-            </div>
+            </Grid>
 
-            <div className={classes.listDetail}>
+            <Grid item xs={12} sm={10}>
                 <div className={classes.listTitle}>
                     <Typography color='primary' variant='h5'>{props.name}</Typography> 
                 </div>
@@ -55,8 +49,9 @@ const TvLists = (props) => {
                     <span>/ Popularity : {props.popularity}</span>
                 </div>
                 <p className={classes.overView}>{props.overview}</p>
-            </div>
-        </div>
+            </Grid>
+
+        </Grid>
     )
 }
 

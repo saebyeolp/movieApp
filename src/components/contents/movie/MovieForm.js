@@ -34,19 +34,26 @@ const MovieOption = (props) => {
     const classes = getStyles()
 
     const options =  [
-        {value: 'now_playing'},
-        {value: 'popular'},
-        {value: 'top_rated'},
-        {value: 'upcoming'}
+        {key: 1, value: 'now_playing'},
+        {key: 2, value: 'popular'},
+        {key: 3, value: 'top_rated'},
+        {key: 4, value: 'upcoming'}
     ] 
 
     const optionItems = options.map((option) =>
-        <option value={option.value}>{option.value}</option>
+        <option 
+            key={option.key} 
+            value={option.value}>
+            {option.value}
+        </option>
     );
 
     return (
         <div className={classes.optionBox}>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl 
+                variant="outlined" 
+                className={classes.formControl}
+            >
 
                 <Select
                     native

@@ -53,9 +53,10 @@ class Tvshow extends Component {
         return (
             <Container maxWidth='md'>
                 <TvForm
-                    handleChangeOption={this.handleChangeOption}
                     option={option}
                     tvs={tvs}
+                    isLoading={isLoading}
+                    handleChangeOption={this.handleChangeOption}
                     handleTvFetch={this.handleTvFetch}
                 />
             </Container>

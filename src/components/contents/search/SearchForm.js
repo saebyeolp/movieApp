@@ -39,6 +39,16 @@ const SearchForm = (props) => {
 
     const classes = getStyles()
 
+    const options =  [
+        {value: 'tv'},
+        {value: 'movie'},
+        {value: 'multi'},
+    ] 
+
+    const optionItems = options.map((option) =>
+        <option value={option.value}>{option.value}</option>
+    );
+
     return (
         <div className={classes.optionBox}>
             <FormControl variant="outlined" className={classes.formControl} >
@@ -52,13 +62,12 @@ const SearchForm = (props) => {
                     onChange={props.handleChangeQuery}
                 />
                 <Select
+                    native
                     defaultValue="tv"
                     onChange={props.handleChangeOption}
                     style={{width: 100, marginRight: 10}}
                 >
-                    <MenuItem value="tv">tv</MenuItem>
-                    <MenuItem value="movie">movie</MenuItem>
-                    <MenuItem value="multi">multi</MenuItem>
+                    {optionItems}
                 </Select>
                 <Button
                     variant="contained"

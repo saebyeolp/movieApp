@@ -3,6 +3,7 @@ import { makeStyles, FormControl, Select, MenuItem, Button } from '@material-ui/
 import SearchIcon from '@material-ui/icons/Search';
 
 import TvLists from './TvLists'
+import Loading from '../Loading'
 
 const getStyles = makeStyles(theme => ({
     optionBox: {
@@ -17,6 +18,14 @@ const getStyles = makeStyles(theme => ({
     button: {
         display: 'inline-block',
         width: '10%'
+    },
+    listBox: {
+        width:'100%', 
+        paddingTop:30, 
+        paddingBottom: 60, 
+        display:'flex', 
+        flexWrap: 'wrap', 
+        justifyContent: 'center'
     }
 }))
 
@@ -24,19 +33,32 @@ const TvForm = (props) => {
 
     const classes = getStyles()
 
+    const options =  [
+        {key: 1, value: 'airing_today'},
+        {key: 2, value: 'on_the_air'},
+        {key: 3, value: 'popular'},
+        {key: 4, value: 'top_rated'}
+    ] 
+
+    const optionItems = options.map((option) =>
+        <option 
+            key={option.key} 
+            value={option.value}>
+            {option.value}
+        </option>
+    );
+
     return (
         <div className={classes.optionBox}>
             <FormControl variant="outlined" className={classes.formControl}>
 
                 <Select
+                    native
                     defaultValue="airing_today"
                     onChange={props.handleChangeOption}
                     style={{width: 270, marginRight: 10}}
                 >
-                    <MenuItem value="airing_today">airing_today</MenuItem>
-                    <MenuItem value="on_the_air">on-the-air</MenuItem>
-                    <MenuItem value="popular">popular</MenuItem>
-                    <MenuItem value="top_rated">top-rated</MenuItem>
+                    {optionItems}
                 </Select>
                 <Button
                     variant="contained"
@@ -49,8 +71,8 @@ const TvForm = (props) => {
 
             </FormControl>
 
-            <div style={{width:'100%', paddingTop:30, paddingBottom: 60, display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-                    {
+            <div className={classes.listBox}>
+                    {   props.isLoading ? <Loading /> :
                         props.tvs.map((tv, i) => {
                             return (
                                 <TvLists 
