@@ -1,9 +1,10 @@
 import React from 'react'
-import { makeStyles, FormControl, Select, MenuItem, Button } from '@material-ui/core/';
-import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/';
+import Select from 'react-select'
 
 import MovieLists from './MovieLists'
 import Loading from '../Loading'
+
 
 const getStyles = makeStyles(theme => ({
     optionBox: {
@@ -26,6 +27,9 @@ const getStyles = makeStyles(theme => ({
         display:'flex', 
         flexWrap: 'wrap', 
         justifyContent: 'center'
+    },
+    selectBox : {
+        height: 56,
     }
 }))
 
@@ -34,46 +38,20 @@ const MovieOption = (props) => {
     const classes = getStyles()
 
     const options =  [
-        {key: 1, value: 'now_playing'},
-        {key: 2, value: 'popular'},
-        {key: 3, value: 'top_rated'},
-        {key: 4, value: 'upcoming'}
+        {label: 'Now-Playing', value: 'now_playing'},
+        {label: 'Popular', value: 'popular'},
+        {label: 'Top-Rated', value: 'top_rated'},
+        {label: 'Upcoming', value: 'upcoming'}
     ] 
-
-    const optionItems = options.map((option) =>
-        <option 
-            key={option.key} 
-            value={option.value}>
-            {option.value}
-        </option>
-    );
 
     return (
         <div className={classes.optionBox}>
-            <FormControl 
-                variant="outlined" 
-                className={classes.formControl}
-            >
 
-                <Select
-                    native
-                    defaultValue="now_playing"
-                    onChange={props.handleChangeOption}
-                    style={{width: 270, marginRight: 10}}
-                >
-                    {optionItems}
-                </Select>
-
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className="button"
-                    onClick={props.handleMovieFetch}
-                >
-                    <SearchIcon/>
-                </Button>
-
-            </FormControl>
+            <Select 
+                placeholder={'Now-Playing'}
+                options={options}
+                onChange={props.handleChange}
+            />
 
             <div className={classes.listBox}>
                     {   props.isLoading ? <Loading /> :

@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, FormControl, Select, MenuItem, Button, TextField } from '@material-ui/core/';
+import { makeStyles, FormControl, Select, Button, TextField } from '@material-ui/core/';
 import SearchIcon from '@material-ui/icons/Search';
 
 /* import components */

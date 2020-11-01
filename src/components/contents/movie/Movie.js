@@ -15,10 +15,11 @@ class Movie extends Component {
             option: 'now_playing',
             isLoading: false,
         }
+        this.handleChange = this.handleChange.bind(this)
       }
 
     componentDidMount() {
-        this.fetchMovie(this.state.option)
+        this.fetchMovie('now_playing')
     }
 
     fetchMovie = async (option) => {
@@ -31,28 +32,22 @@ class Movie extends Component {
             movies => {
               this.setState({
                 movies: movies,
-                isLoading: false
+                isLoading: false,
               })
             },
             error => {
               throw error
-            })
+        })
     }
 
-    handleChangeOption = (e) => {
-        e.preventDefault()
-        this.setState({ option: e.target.value })
-    }
-    
-    handleMovieFetch = (e) => {
-        e.preventDefault()
-        this.setState({ option:e.target.value })
-        this.fetchMovie(this.state.option);
+    handleChange = (selectedOption) => {
+        console.log(selectedOption)
+        this.fetchMovie(selectedOption.value)
     }
 
     render() {
 
-        const { movies, isLoading, option, page } = this.state
+        const { movies, isLoading, option } = this.state
         
         return (
             <Container maxWidth='md'>
@@ -60,8 +55,7 @@ class Movie extends Component {
                     movies={movies}
                     option={option}
                     isLoading={isLoading}
-                    handleChangeOption={this.handleChangeOption}
-                    handleMovieFetch={this.handleMovieFetch}
+                    handleChange={this.handleChange}
                 />
 
             </Container>

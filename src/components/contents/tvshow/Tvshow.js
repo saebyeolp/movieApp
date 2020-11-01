@@ -35,15 +35,9 @@ class Tvshow extends Component {
             })
     }
 
-    handleChangeOption = (e) => {
-        e.preventDefault()
-        this.setState({ option: e.target.value })
-    }
-
-    handleTvFetch = (e) => {
-        e.preventDefault()
-        this.setState({option:e.target.value})
-        this.fetchTv(this.state.option);
+    handleChange = (selectedOption) => {
+        console.log(selectedOption)
+        this.fetchTv(selectedOption.value)
     }
 
     render() {
@@ -56,8 +50,7 @@ class Tvshow extends Component {
                     option={option}
                     tvs={tvs}
                     isLoading={isLoading}
-                    handleChangeOption={this.handleChangeOption}
-                    handleTvFetch={this.handleTvFetch}
+                    handleChange={this.handleChange}
                 />
             </Container>
         )

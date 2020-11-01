@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles, FormControl, Select, MenuItem, Button } from '@material-ui/core/';
-import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/';
+import Select from 'react-select'
 
 import TvLists from './TvLists'
 import Loading from '../Loading'
@@ -34,42 +34,21 @@ const TvForm = (props) => {
     const classes = getStyles()
 
     const options =  [
-        {key: 1, value: 'airing_today'},
-        {key: 2, value: 'on_the_air'},
-        {key: 3, value: 'popular'},
-        {key: 4, value: 'top_rated'}
+        {label: 'Airing_Today', value: 'airing_today'},
+        {label: 'On_The_Air', value: 'on_the_air'},
+        {label: 'Popular', value: 'popular'},
+        {label: 'Top_Rated', value: 'top_rated'}
     ] 
 
-    const optionItems = options.map((option) =>
-        <option 
-            key={option.key} 
-            value={option.value}>
-            {option.value}
-        </option>
-    );
 
     return (
         <div className={classes.optionBox}>
-            <FormControl variant="outlined" className={classes.formControl}>
 
-                <Select
-                    native
-                    defaultValue="airing_today"
-                    onChange={props.handleChangeOption}
-                    style={{width: 270, marginRight: 10}}
-                >
-                    {optionItems}
-                </Select>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className="button"
-                    onClick={props.handleTvFetch}
-                >
-                    <SearchIcon/>
-                </Button>
-
-            </FormControl>
+            <Select 
+                placeholder={'Airing_Today'}
+                options={options}
+                onChange={props.handleChange}
+            />
 
             <div className={classes.listBox}>
                     {   props.isLoading ? <Loading /> :
