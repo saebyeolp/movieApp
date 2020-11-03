@@ -1,6 +1,7 @@
 import React from 'react'
-import { makeStyles, FormControl, Select, Button, TextField } from '@material-ui/core/';
+import { makeStyles, FormControl, Button, TextField } from '@material-ui/core/';
 import SearchIcon from '@material-ui/icons/Search';
+import Select from 'react-select'
 
 /* import components */
 import SearchLists from './SearchLists'
@@ -22,7 +23,7 @@ const getStyles = makeStyles(theme => ({
     },
     button: {
         display: 'inline-block',
-        width: '10%'
+        width: '10%',
     },
     listBox: {
         width:'100%', 
@@ -40,14 +41,10 @@ const SearchForm = (props) => {
     const classes = getStyles()
 
     const options =  [
-        {value: 'tv'},
-        {value: 'movie'},
-        {value: 'multi'},
+        {label: 'TV', value: 'tv'},
+        {label: 'Movie', value: 'movie'},
+        {label: 'Multi', value: 'multi'},
     ] 
-
-    const optionItems = options.map((option) =>
-        <option value={option.value}>{option.value}</option>
-    );
 
     return (
         <div className={classes.optionBox}>
@@ -61,14 +58,12 @@ const SearchForm = (props) => {
                     value={props.query}
                     onChange={props.handleChangeQuery}
                 />
-                <Select
-                    native
-                    defaultValue="tv"
-                    onChange={props.handleChangeOption}
-                    style={{width: 100, marginRight: 10}}
-                >
-                    {optionItems}
-                </Select>
+                <Select 
+                    placeholder={'TV'}
+                    classNamePrefix='filter2'
+                    options={options}
+                    onChange={props.handleChange}
+                />
                 <Button
                     variant="contained"
                     color="primary"

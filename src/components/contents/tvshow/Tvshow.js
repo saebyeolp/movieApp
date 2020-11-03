@@ -15,6 +15,7 @@ class Tvshow extends Component {
             isLoading: false,
             option: 'airing_today'
         }
+        this.handleChange = this.handleChange.bind(this)
       }
 
     componentDidMount() {
@@ -36,7 +37,6 @@ class Tvshow extends Component {
     }
 
     handleChange = (selectedOption) => {
-        console.log(selectedOption)
         this.fetchTv(selectedOption.value)
     }
 

@@ -4,6 +4,7 @@ import Select from 'react-select'
 
 import MovieLists from './MovieLists'
 import Loading from '../Loading'
+import Pagination from './../Pagination'
 
 
 const getStyles = makeStyles(theme => ({
@@ -11,10 +12,12 @@ const getStyles = makeStyles(theme => ({
         width: '100%',
         marginTop: 20,
     },
-    formControl: {
+    selectFlex: {
         display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'row'
+        justifyContent: 'center'
+    },
+    selectBox : {
+        height: 56,
     },
     button: {
         display: 'inline-block',
@@ -28,9 +31,6 @@ const getStyles = makeStyles(theme => ({
         flexWrap: 'wrap', 
         justifyContent: 'center'
     },
-    selectBox : {
-        height: 56,
-    }
 }))
 
 const MovieOption = (props) => {
@@ -47,28 +47,40 @@ const MovieOption = (props) => {
     return (
         <div className={classes.optionBox}>
 
-            <Select 
-                placeholder={'Now-Playing'}
-                options={options}
-                onChange={props.handleChange}
-            />
+            <div className={classes.selectFlex}>
+                <Select 
+                    placeholder={'Now-Playing'}
+                    options={options}
+                    onChange={props.handleChange}
+                    classNamePrefix='filter'
+                />
+            </div>
 
             <div className={classes.listBox}>
-                    {   props.isLoading ? <Loading /> :
-                        props.movies.map((movie, i) => {
-                            return (
-                                <MovieLists 
-                                    key={i}
-                                    title={movie.title}
-                                    poster_path={movie.poster_path}
-                                    release_date={movie.release_date}
-                                    popularity={movie.popularity}
-                                    overview={movie.overview}
-                                />
-                            )
-                        })
-                    }
+                {   props.isLoading ? <Loading /> :
+                    props.movies.map((movie, i) => {
+                        return (
+                            <MovieLists 
+                                key={i}
+                                title={movie.title}
+                                poster_path={movie.poster_path}
+                                release_date={movie.release_date}
+                                popularity={movie.popularity}
+                                overview={movie.overview}
+                            />
+                        )
+                    })
+                }
             </div>
+
+            {   props.isLoading ? '' :
+                <Pagination 
+                    page={props.page}
+                    handlePageNumber={props.handlePageNumber}
+                />
+
+            }
+
         </div>
     )
 }

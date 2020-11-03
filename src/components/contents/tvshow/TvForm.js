@@ -10,10 +10,9 @@ const getStyles = makeStyles(theme => ({
         width: '100%',
         marginTop: 20,
     },
-    formControl: {
+    selectFlex: {
         display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'row'
+        justifyContent: 'center'
     },
     button: {
         display: 'inline-block',
@@ -40,15 +39,17 @@ const TvForm = (props) => {
         {label: 'Top_Rated', value: 'top_rated'}
     ] 
 
-
     return (
         <div className={classes.optionBox}>
 
-            <Select 
-                placeholder={'Airing_Today'}
-                options={options}
-                onChange={props.handleChange}
-            />
+            <div className={classes.selectFlex}>
+                <Select 
+                    placeholder={'Airing_Today'}
+                    options={options}
+                    onChange={props.handleChange}
+                    classNamePrefix='filter'
+                />
+            </div>
 
             <div className={classes.listBox}>
                     {   props.isLoading ? <Loading /> :
@@ -66,6 +67,7 @@ const TvForm = (props) => {
                         })
                     }
             </div>
+
         </div>
     )
 }

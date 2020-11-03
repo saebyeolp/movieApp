@@ -54,3 +54,14 @@ table th, table td { vertical-align:middle; }
 .MuiPaper-elevation4 {
     box-shadow: none!important;
 }
+
+.filter__control {
+	width: 250px;
+	height: 56px;
+}
+
+.filter2__control {
+	width: 100px;
+	height: 56px;
+	margin-right: 10px;
+}

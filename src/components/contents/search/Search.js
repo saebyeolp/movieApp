@@ -19,7 +19,7 @@ class Search extends Component {
             input: true
         }
         this.handleChangeQuery = this.handleChangeQuery.bind(this)
-        this.handleChangeOption = this.handleChangeOption.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.handleSearchFetch = this.handleSearchFetch.bind(this)
     }
 
@@ -49,14 +49,12 @@ class Search extends Component {
         this.setState({ ...this.state, query: e.target.value})
     }
 
-    handleChangeOption = (e) => {
-        e.preventDefault()
-        this.setState({ ...this.state, searchOpt: e.target.value})
+    handleChange = (selectedOption) => {
+        this.setState({ ...this.state, searchOpt: selectedOption.value})
     }
 
     handleSearchFetch = (e) => {
         e.preventDefault()
-        this.setState({searchOpt: e.target.value, query: e.target.value})
         this.fetchSearch(this.state.searchOpt, this.state.query)
     }
 
@@ -74,7 +72,7 @@ class Search extends Component {
                         isLoading={isLoading}
                         input={input}
                         handleChangeQuery={this.handleChangeQuery}
-                        handleChangeOption={this.handleChangeOption}
+                        handleChange={this.handleChange}
                         handleSearchFetch={this.handleSearchFetch}
                     />
                </Container>
