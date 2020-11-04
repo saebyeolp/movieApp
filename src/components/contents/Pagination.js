@@ -18,10 +18,12 @@ const getStyles = makeStyles(theme => ({
 
 const Pagination = (props) => {
     const classes = getStyles()
+    
 
     return (
         <div className={classes.pageBox}>
             <Button 
+                disabled={props.page <= 1 ? true : false}
                 variant="contained" 
                 color="primary"
                 style={{marginRight: 10}}
@@ -29,8 +31,9 @@ const Pagination = (props) => {
             >
                     prev
             </Button>
-            <span className={classes.pageNum}>{props.page}</span>
+            <span className={classes.pageNum}>{props.page} / {props.totalPages}</span>
             <Button 
+                disabled={props.page >= props.totalPages? true : false}
                 variant="contained" 
                 color="primary"
                 style={{marginLeft: 10}}

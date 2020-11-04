@@ -4,6 +4,8 @@ import Select from 'react-select'
 
 import TvLists from './TvLists'
 import Loading from '../Loading'
+import Pagination from '../Pagination'
+
 
 const getStyles = makeStyles(theme => ({
     optionBox: {
@@ -27,6 +29,8 @@ const getStyles = makeStyles(theme => ({
         justifyContent: 'center'
     }
 }))
+
+
 
 const TvForm = (props) => {
 
@@ -52,21 +56,29 @@ const TvForm = (props) => {
             </div>
 
             <div className={classes.listBox}>
-                    {   props.isLoading ? <Loading /> :
-                        props.tvs.map((tv, i) => {
-                            return (
-                                <TvLists 
-                                    key={i}
-                                    name={tv.name}
-                                    first_air_date={tv.first_air_date}
-                                    popularity={tv.popularity}
-                                    overview={tv.overview}
-                                    poster_path={tv.poster_path}
-                                />
-                            )
-                        })
-                    }
+                {   props.isLoading ? <Loading /> :
+                    props.tvs.map((tv, i) => {
+                        return (
+                            <TvLists 
+                                key={i}
+                                name={tv.name}
+                                first_air_date={tv.first_air_date}
+                                popularity={tv.popularity}
+                                overview={tv.overview}
+                                poster_path={tv.poster_path}
+                            />
+                        )
+                    })
+                }
             </div>
+
+            {   props.isLoading ? '' :
+                <Pagination 
+                    page={props.page}
+                    totalPages={props.totalPages}
+                    handlePageNumber={props.handlePageNumber}
+                />
+            }
 
         </div>
     )

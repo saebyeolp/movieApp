@@ -15,6 +15,7 @@ class Movie extends Component {
             option: 'now_playing',
             isLoading: false,
             page: 1,
+            totalPages: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handlePageNumber = this.handlePageNumber.bind(this)
@@ -33,7 +34,8 @@ class Movie extends Component {
         getMovie(option, page).then(
             movies => {
               this.setState({
-                movies: movies,
+                movies: movies.results,
+                totalPages: movies.total_pages,
                 isLoading: false,
               })
             },
@@ -54,7 +56,7 @@ class Movie extends Component {
 
     render() {
 
-        const { movies, isLoading, option, page } = this.state
+        const { movies, isLoading, option, page, totalPages } = this.state
         
         return (
             <Container maxWidth='md'>
@@ -63,10 +65,10 @@ class Movie extends Component {
                     option={option}
                     isLoading={isLoading}
                     page={page}
+                    totalPages={totalPages}
                     handleChange={this.handleChange}
                     handlePageNumber={this.handlePageNumber}
                 />
-
             </Container>
         )
     }

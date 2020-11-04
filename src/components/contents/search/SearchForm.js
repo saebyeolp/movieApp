@@ -9,6 +9,7 @@ import Noquery from '../Noquery'
 import Initiation from '../Initiation'
 import Noresult from '../Noresult'
 import Loading from '../Loading'
+import Pagination from '../Pagination'
 
 
 const getStyles = makeStyles(theme => ({
@@ -62,7 +63,7 @@ const SearchForm = (props) => {
                     placeholder={'TV'}
                     classNamePrefix='filter2'
                     options={options}
-                    onChange={props.handleChange}
+                    onChange={props.handleChangeOption}
                 />
                 <Button
                     variant="contained"
@@ -95,6 +96,14 @@ const SearchForm = (props) => {
                   })
                 }
             </div>
+
+            {   props.searchResults.length === 0 ? '' :
+                <Pagination 
+                    page={props.page}
+                    totalPages={props.totalPages}
+                    handlePageNumber={props.handlePageNumber}
+                />
+            }
 
         </div>
     )

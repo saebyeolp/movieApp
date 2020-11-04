@@ -8,8 +8,7 @@ export const getMovie = async (option, page) => {
 
   try {
     const response = await axios.get(url)
-    const movies = response.data.results
-    console.log(movies)
+    const movies = response.data
     return movies
     
   } catch (error) {
@@ -17,42 +16,13 @@ export const getMovie = async (option, page) => {
   }
 }
 
-// export const getMovie = async option => {
+export const getSearch = async (searchOpt, query, page) => {
   
-//   const url = `${BASE_URL}movie/${option}`
-
-//   try {
-//     const response = await axios.get(url, {
-//       params: {
-//         api_key: API_KEY,
-//         language: 'en-US',
-//         page: 1
-//       }
-//     })
-//     const movies = response.data.results
-//     console.log(movies)
-//     return movies
-    
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
-export const getSearch = async (searchOpt, query) => {
-  
-  const url = `${BASE_URL}search/${searchOpt}`
+  const url = `${BASE_URL}search/${searchOpt}?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}`
 
   try {
-    const response = await axios.get(url, {
-      params: {
-        query: query,
-        api_key: API_KEY,
-        language: 'en-US',
-        page: 1
-      }
-    })
-    const searchResults = response.data.results
-    console.log(searchResults)
+    const response = await axios.get(url)
+    const searchResults = response.data
     return searchResults
     
   } catch (error) {
@@ -60,28 +30,18 @@ export const getSearch = async (searchOpt, query) => {
   }
 }
 
-
-export const getTV = async option => {
+export const getTV = async (option, page) => {
   
-  const url = `${BASE_URL}tv/${option}`
+  const url = `${BASE_URL}tv/${option}?api_key=${API_KEY}&language=en-US&page=${page}`
 
   try {
-    const response = await axios.get(url, {
-      params: {
-        api_key: API_KEY,
-        language: 'en-US',
-        page: 1
-      }
-    })
-    const tvs = response.data.results
-    console.log(tvs)
+    const response = await axios.get(url)
+    const tvs = response.data
     return tvs
     
   } catch (error) {
     throw error
   }
 }
-
-
   
   

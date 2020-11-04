@@ -19,7 +19,7 @@ const getStyles = makeStyles(theme => ({
     },
     noImg: {
         width: '100%',
-        height: '100%',
+        height: 180,
         backgroundImage: `url(${bgImg})`,
         backgroundPosition: 'center'       
     }
@@ -35,7 +35,7 @@ const TvLists = (props) => {
 
             <Grid item xs={12} sm={2}>
                 {
-                    props.poster_path == null ? <div className='noImg'></div> : 
+                    props.poster_path == null ? <div className={classes.noImg}></div> : 
                     <img className={classes.posterImg} src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt={`${props.title}`}/>
                 }
             </Grid>

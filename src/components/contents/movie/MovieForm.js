@@ -16,9 +16,6 @@ const getStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center'
     },
-    selectBox : {
-        height: 56,
-    },
     button: {
         display: 'inline-block',
         width: '10%'
@@ -26,7 +23,7 @@ const getStyles = makeStyles(theme => ({
     listBox: {
         width:'100%', 
         paddingTop:30, 
-        paddingBottom: 60, 
+        paddingBottom: 30, 
         display:'flex', 
         flexWrap: 'wrap', 
         justifyContent: 'center'
@@ -76,9 +73,9 @@ const MovieOption = (props) => {
             {   props.isLoading ? '' :
                 <Pagination 
                     page={props.page}
+                    totalPages={props.totalPages}
                     handlePageNumber={props.handlePageNumber}
                 />
-
             }
 
         </div>
