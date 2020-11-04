@@ -12,6 +12,10 @@ const getStyles = makeStyles(theme => ({
     pageNum: {
         display: 'inline-block',
         padding: 10
+    },
+    btnColor: {
+        backgroundColor: '#FEE510',
+        color: 'black'
     }
 }))
 
@@ -25,7 +29,7 @@ const Pagination = (props) => {
             <Button 
                 disabled={props.page <= 1 ? true : false}
                 variant="contained" 
-                color="primary"
+                className={classes.btnColor}
                 style={{marginRight: 10}}
                 onClick={()=> props.handlePageNumber(props.page - 1)}
             >
@@ -35,7 +39,7 @@ const Pagination = (props) => {
             <Button 
                 disabled={props.page >= props.totalPages? true : false}
                 variant="contained" 
-                color="primary"
+                className={classes.btnColor}
                 style={{marginLeft: 10}}
                 onClick={()=> props.handlePageNumber(props.page + 1)}
             >

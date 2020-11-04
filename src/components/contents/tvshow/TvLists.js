@@ -4,7 +4,10 @@ import bgImg from './../../../img/noImg.jpg'
 
 const getStyles = makeStyles(theme => ({
     listBox: {
-        marginBottom: 10
+        marginBottom: 10,
+        borderBottomWidth: 1,
+        borderColor: '#d2d2d2',
+        borderStyle: 'dashed'
     },
     posterImg: {
         maxWidth: '100%',
@@ -22,6 +25,10 @@ const getStyles = makeStyles(theme => ({
         height: 180,
         backgroundImage: `url(${bgImg})`,
         backgroundPosition: 'center'       
+    },
+    listTitle : {
+        color: '#032541',
+        paddingTop: 5,
     }
 }))
 
@@ -42,7 +49,7 @@ const TvLists = (props) => {
 
             <Grid item xs={12} sm={10}>
                 <div className={classes.listTitle}>
-                    <Typography color='primary' variant='h5'>{props.name}</Typography> 
+                    <Typography variant='h5'>{props.name}</Typography> 
                 </div>
                 <div style={{paddingTop:5, color:'#555'}}>
                     <span className={classes.spanTag}>First Air Date : {props.first_air_date}</span> 

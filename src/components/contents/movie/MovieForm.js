@@ -23,7 +23,7 @@ const getStyles = makeStyles(theme => ({
     },
     listBox: {
         width:'100%', 
-        paddingTop:30, 
+        paddingTop:40, 
         paddingBottom: 30, 
         display:'flex', 
         flexWrap: 'wrap', 

@@ -8,18 +8,24 @@ import Search from '../contents/search/Search'
 import Tvshow from '../contents/tvshow/Tvshow'
 
 
-
 const getStyles = makeStyles(theme => ({
     TabScreensWrapper: {
         width: '100%',
         height: 48,
-        backgroundColor: '#3f51b5',
+        borderStyle: 'solid',
+        backgroundColor: '#FEE510',
+        borderBottomWidth: 1,
+        borderColor: '#032541'
     },
     indicator: {
-      backgroundColor: '#3f51b5',
+      backgroundColor: '#FEE510',
     },
     tabBox: {
       minHeight:400, 
+    },
+    tabColor: {
+      backgroundColor: '#FEE510',
+      color: 'black'
     }
 }))
 
@@ -70,6 +76,7 @@ const TabScreens = () => {
                 <AppBar position="static">
                     <Tabs 
                       classes={{indicator: classes.indicator}} 
+                      className={classes.tabColor}
                       centered 
                       value={value} 
                       onChange={handleChange} 

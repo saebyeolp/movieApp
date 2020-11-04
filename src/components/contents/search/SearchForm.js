@@ -22,14 +22,15 @@ const getStyles = makeStyles(theme => ({
         justifyContent: 'center',
         flexDirection: 'row'
     },
-    button: {
+    searchBtn: {
         display: 'inline-block',
-        width: '10%',
+        width: '5%',
+        backgroundColor: '#FEE510',
     },
     listBox: {
         width:'100%', 
-        paddingTop:30, 
-        paddingBottom: 60, 
+        paddingTop: 40, 
+        paddingBottom: 30, 
         display:'flex', 
         flexWrap: 'wrap', 
         justifyContent: 'center'
@@ -74,8 +75,7 @@ const SearchForm = (props) => {
                 />
                 <Button
                     variant="contained"
-                    color="primary"
-                    className="button"
+                    className={classes.searchBtn}
                     onClick={props.handleSearchFetch}
                 >
                     <SearchIcon/>

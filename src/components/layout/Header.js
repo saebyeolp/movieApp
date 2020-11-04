@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/';
+import { makeStyles, Button } from '@material-ui/core/';
 
 const getStyles = makeStyles(theme => ({
     headerWrapper: {
@@ -12,15 +12,20 @@ const getStyles = makeStyles(theme => ({
     },
 }))
 
-
 const Header = () => {
     const classes = getStyles();
 
+    const refreshPage = () => {
+        window.location.reload(false);
+    }
+
     return (
         <div className={classes.headerWrapper}>
-            <span>
-                <img src='//www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' alt='TBDB logo' height='50'/>
-            </span>
+            <Button
+                onClick={refreshPage}
+            >
+                <img src='//www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' alt='TMDB logo' height='50'/>
+            </Button>
         </div>
     )
 }

@@ -21,3 +21,4 @@ export default App;
 // select from https://www.npmjs.com/package/react-select
 //             https://stackoverflow.com/questions/53657560/react-select-cannot-change-color-of-text-in-placeholder-within-text-box
 // code source from https://www.youtube.com/watch?v=nrJIJuaZsjA&list=PL_kAgwZgMfWyZ6m8fDwdiwEarr_g6nFxz&index=3
+//                  https://upmostly.com/tutorials/how-to-refresh-a-page-or-component-in-react
