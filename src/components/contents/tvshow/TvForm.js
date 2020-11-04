@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/';
 import Select from 'react-select'
 
+/* import components */
 import TvLists from './TvLists'
 import Loading from '../Loading'
 import Pagination from '../Pagination'
@@ -31,7 +32,6 @@ const getStyles = makeStyles(theme => ({
 }))
 
 
-
 const TvForm = (props) => {
 
     const classes = getStyles()
@@ -49,6 +49,13 @@ const TvForm = (props) => {
             <div className={classes.selectFlex}>
                 <Select 
                     placeholder={'Airing_Today'}
+                    theme={theme => ({
+                        ...theme,
+                        colors: {
+                            ...theme.colors,
+                            neutral50: '#333', 
+                        },
+                    })}
                     options={options}
                     onChange={props.handleChange}
                     classNamePrefix='filter'

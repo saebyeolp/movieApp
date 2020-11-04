@@ -27,7 +27,6 @@ const getStyles = makeStyles(theme => ({
 }))
 
 
-
 const MovieLists = (props) => {
 
     const classes = getStyles()

@@ -6,7 +6,6 @@ import { getSearch } from '../../../service/api'
 import SearchForm from './SearchForm'
 
 
-
 class Search extends Component {
 
     constructor(){

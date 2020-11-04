@@ -61,6 +61,13 @@ const SearchForm = (props) => {
                 />
                 <Select 
                     placeholder={'TV'}
+                    theme={theme => ({
+                        ...theme,
+                        colors: {
+                            ...theme.colors,
+                            neutral50: '#333', 
+                        },
+                    })}
                     classNamePrefix='filter2'
                     options={options}
                     onChange={props.handleChangeOption}
@@ -97,7 +104,8 @@ const SearchForm = (props) => {
                 }
             </div>
 
-            {   props.searchResults.length === 0 ? '' :
+            {   !props.query && !props.isLoading ? '' :
+                 props.query && props.searchResults.length === 0 ? '' :
                 <Pagination 
                     page={props.page}
                     totalPages={props.totalPages}

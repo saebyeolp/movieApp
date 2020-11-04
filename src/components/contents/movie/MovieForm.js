@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/';
 import Select from 'react-select'
 
+/* import components */
 import MovieLists from './MovieLists'
 import Loading from '../Loading'
 import Pagination from './../Pagination'
@@ -47,6 +48,13 @@ const MovieOption = (props) => {
             <div className={classes.selectFlex}>
                 <Select 
                     placeholder={'Now-Playing'}
+                    theme={theme => ({
+                        ...theme,
+                        colors: {
+                            ...theme.colors,
+                            neutral50: '#333', 
+                        },
+                    })}
                     options={options}
                     onChange={props.handleChange}
                     classNamePrefix='filter'
