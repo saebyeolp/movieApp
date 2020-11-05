@@ -1,11 +1,11 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/';
+import { makeStyles, Button } from '@material-ui/core/';
 import Select from 'react-select'
 
 /* import components */
 import MovieLists from './MovieLists'
 import Loading from '../Loading'
-import Pagination from './../Pagination'
+import Pagination from '../Pagination'
 
 
 const getStyles = makeStyles(theme => ({
@@ -23,12 +23,27 @@ const getStyles = makeStyles(theme => ({
     },
     listBox: {
         width:'100%', 
-        paddingTop:40, 
-        paddingBottom: 30, 
+        paddingTop: 40, 
         display:'flex', 
         flexWrap: 'wrap', 
         justifyContent: 'center'
     },
+    btnBox: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: 20
+    },
+    btnStyle: {
+        width: '49%',
+        backgroundColor: '#FEE510',
+        color: 'black',
+    },
+    btnStyleBlocked: {
+        width: '49%',
+        backgroundColor: '#EEE',
+        color: '#555',
+    }
 }))
 
 const MovieOption = (props) => {
@@ -62,8 +77,25 @@ const MovieOption = (props) => {
             </div>
 
             <div className={classes.listBox}>
-                {   props.isLoading ? <Loading /> :
-                    props.movies.map((movie, i) => {
+                {   
+                    !props.firstPage ? '' :
+                    props.isLoading ? <Loading /> :
+                    props.movies.slice(0,10).map((movie, i) => {
+                        return (
+                            <MovieLists 
+                                key={i}
+                                title={movie.title}
+                                poster_path={movie.poster_path}
+                                release_date={movie.release_date}
+                                popularity={movie.popularity}
+                                overview={movie.overview}
+                            />
+                        )
+                    })
+                }
+
+                {   props.firstPage ? '' :
+                    props.movies.slice(10,20).map((movie, i) => {
                         return (
                             <MovieLists 
                                 key={i}
@@ -77,6 +109,26 @@ const MovieOption = (props) => {
                     })
                 }
             </div>
+            
+            {   props.isLoading ? '' :
+                <div className={classes.btnBox}>
+                    <Button
+                        className={props.firstPage ? classes.btnStyleBlocked : classes.btnStyle}
+                        style={{marginRight: 10}}
+                        disabled={props.firstPage ? true : false}
+                        onClick={props.handleFirstPage}
+                    >
+                        Go to the First Page
+                    </Button>
+                    <Button
+                        className={props.firstPage ? classes.btnStyle : classes.btnStyleBlocked}
+                        disabled={!props.firstPage ? true : false}
+                        onClick={props.handleSecondPage}
+                    >
+                        Go to the Second Page
+                    </Button>
+                </div>
+            }
 
             {   props.isLoading ? '' :
                 <Pagination 
@@ -84,9 +136,10 @@ const MovieOption = (props) => {
                     totalPages={props.totalPages}
                     handlePageNumber={props.handlePageNumber}
                 />
-            }
-
+            }   
+                
         </div>
+
     )
 }
 

@@ -30,10 +30,25 @@ const getStyles = makeStyles(theme => ({
     listBox: {
         width:'100%', 
         paddingTop: 40, 
-        paddingBottom: 30, 
         display:'flex', 
         flexWrap: 'wrap', 
         justifyContent: 'center'
+    },
+    btnBox: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: 20
+    },
+    btnStyle: {
+        width: '49%',
+        backgroundColor: '#FEE510',
+        color: 'black',
+    },
+    btnStyleBlocked: {
+        width: '49%',
+        backgroundColor: '#EEE',
+        color: '#555',
     }
 }))
 
@@ -87,24 +102,67 @@ const SearchForm = (props) => {
                   props.query && props.input ? <Initiation /> : 
                   !props.query && props.isLoading ? <Loading /> :
                   props.query && props.searchResults.length === 0 ? <Noresult /> :
-                  props.searchResults.map((search, i) => {
+                  !props.firstPage ? '' :
+                  props.searchResults.slice(0,10).map((search, i) => {
                     return (
-                        <SearchLists 
-                            key={i}
-                            title={search.title}
-                            name={search.name}
-                            release_date={search.release_date}
-                            first_air_date={search.first_air_date}
-                            popularity={search.popularity}
-                            overview={search.overview}
-                            poster_path={search.poster_path}
-                        />
+                            <SearchLists 
+                                key={i}
+                                title={search.title}
+                                name={search.name}
+                                release_date={search.release_date}
+                                first_air_date={search.first_air_date}
+                                popularity={search.popularity}
+                                overview={search.overview}
+                                poster_path={search.poster_path}
+                            />
                     )
                   })
                 }
+
+                {  
+                    props.firstPage ? '' :
+                    props.searchResults.slice(10,20).map((search, i) => {
+                        return (
+                            <SearchLists 
+                                key={i}
+                                title={search.title}
+                                name={search.name}
+                                release_date={search.release_date}
+                                first_air_date={search.first_air_date}
+                                popularity={search.popularity}
+                                overview={search.overview}
+                                poster_path={search.poster_path}
+                            />
+                        )
+                    })
+                }
             </div>
 
+            {   props.totalResults <= 10 ? '' :
+                !props.query && !props.isLoading ? '' :
+                 props.query && props.input ? '' :
+                 props.query && props.searchResults.length === 0 ? '' :
+                <div className={classes.btnBox}>
+                    <Button
+                        className={props.firstPage ? classes.btnStyleBlocked : classes.btnStyle}
+                        style={{marginRight: 10}}
+                        disabled={props.firstPage ? true : false}
+                        onClick={props.handleFirstPage}
+                    >
+                        Go to the First Page
+                    </Button>
+                    <Button
+                        className={props.firstPage ? classes.btnStyle : classes.btnStyleBlocked}
+                        disabled={!props.firstPage ? true : false}
+                        onClick={props.handleSecondPage}
+                    >
+                        Go to the Second Page
+                    </Button>
+                </div>
+            }
+
             {   !props.query && !props.isLoading ? '' :
+                 props.query && props.input ? '' :
                  props.query && props.searchResults.length === 0 ? '' :
                 <Pagination 
                     page={props.page}

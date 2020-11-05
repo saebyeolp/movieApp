@@ -15,9 +15,14 @@ class Tvshow extends Component {
             option: 'airing_today',
             isLoading: false,
             page: 1,
-            totalPages: ''
+            totalPages: '',
+            firstPage: false,
+            firstPage: true
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handlePageNumber = this.handlePageNumber.bind(this)
+        this.handleFirstPage = this.handleFirstPage.bind(this)
+        this.handleSecondPage = this.handleSecondPage.bind(this)
       }
 
     componentDidMount() {
@@ -44,18 +49,26 @@ class Tvshow extends Component {
     }
 
     handleChange = (selectedOption) => {
-        this.setState({option: selectedOption.value, page: 1})
+        this.setState({option: selectedOption.value, page: 1, firstPage: true})
         this.fetchTv(selectedOption.value, 1)
     }
 
     handlePageNumber = (n) => {
-        this.setState({option: this.state.option, page: n})
+        this.setState({option: this.state.option, page: n, firstPage: true})
         this.fetchTv(this.state.option, n)
+    }
+
+    handleFirstPage = () => {
+        this.setState({firstPage: true})
+    }
+
+    handleSecondPage = () => {
+        this.setState({firstPage: false})
     }
 
     render() {
 
-        const { tvs, isLoading, option, page, totalPages } = this.state
+        const { tvs, isLoading, option, page, totalPages, firstPage } = this.state
         
         return (
             <Container maxWidth='md'>
@@ -65,8 +78,11 @@ class Tvshow extends Component {
                     isLoading={isLoading}
                     page={page}
                     totalPages={totalPages}
+                    firstPage={firstPage}
                     handleChange={this.handleChange}
                     handlePageNumber={this.handlePageNumber}
+                    handleFirstPage={this.handleFirstPage}
+                    handleSecondPage={this.handleSecondPage}
                 />
             </Container>
         )

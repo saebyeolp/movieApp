@@ -7,7 +7,8 @@ const getStyles = makeStyles(theme => ({
         marginBottom: 50,
         display: 'flex',
         justifyContent: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        paddingTop: 30
     },
     pageNum: {
         display: 'inline-block',

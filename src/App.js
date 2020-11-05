@@ -22,3 +22,4 @@ export default App;
 //             https://stackoverflow.com/questions/53657560/react-select-cannot-change-color-of-text-in-placeholder-within-text-box
 // code source from https://www.youtube.com/watch?v=nrJIJuaZsjA&list=PL_kAgwZgMfWyZ6m8fDwdiwEarr_g6nFxz&index=3
 //                  https://upmostly.com/tutorials/how-to-refresh-a-page-or-component-in-react
+//                  https://stackoverflow.com/questions/59210276/javascript-array-get-first-10-items
