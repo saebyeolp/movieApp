@@ -57,9 +57,9 @@ const SearchForm = (props) => {
     const classes = getStyles()
 
     const options =  [
-        {label: 'TV', value: 'tv'},
         {label: 'Movie', value: 'movie'},
         {label: 'Multi', value: 'multi'},
+        {label: 'TV', value: 'tv'},
     ] 
 
     return (
@@ -75,7 +75,7 @@ const SearchForm = (props) => {
                     onChange={props.handleChangeQuery}
                 />
                 <Select 
-                    placeholder={'TV'}
+                    placeholder={'Movie'}
                     theme={theme => ({
                         ...theme,
                         colors: {

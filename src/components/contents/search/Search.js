@@ -11,7 +11,7 @@ class Search extends Component {
         super()
         this.state = {
             searchResults: [],
-            searchOpt: 'tv',
+            searchOpt: 'movie',
             query: '',
             isLoading: false,
             input: true,
