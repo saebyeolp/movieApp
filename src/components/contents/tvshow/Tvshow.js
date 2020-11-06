@@ -5,7 +5,6 @@ import { Container } from '@material-ui/core/';
 import { getTV } from '../../../service/api'
 import TvForm from './TvForm'
 
-
 class Tvshow extends Component {
 
     constructor(){
@@ -87,7 +86,6 @@ class Tvshow extends Component {
             </Container>
         )
     }
-
 }
 
 export default Tvshow

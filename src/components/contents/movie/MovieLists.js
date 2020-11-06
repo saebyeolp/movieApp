@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles, Typography, Grid } from '@material-ui/core/';
 import bgImg from './../../../img/noImg.jpg'
 
-
 const getStyles = makeStyles(theme => ({
     listBox: {
         marginBottom: 10,
@@ -32,7 +31,6 @@ const getStyles = makeStyles(theme => ({
         paddingTop: 5,
     }
 }))
-
 
 const MovieLists = (props) => {
 

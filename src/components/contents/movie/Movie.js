@@ -5,7 +5,6 @@ import { Container } from '@material-ui/core/';
 import { getMovie } from '../../../service/api'
 import MovieForm from './MovieForm'
 
-
 class Movie extends Component {
 
     constructor(){

@@ -7,7 +7,6 @@ import TvLists from './TvLists'
 import Loading from '../Loading'
 import Pagination from '../Pagination'
 
-
 const getStyles = makeStyles(theme => ({
     optionBox: {
         width: '100%',
@@ -45,7 +44,6 @@ const getStyles = makeStyles(theme => ({
         color: '#555',
     }
 }))
-
 
 const TvForm = (props) => {
 
@@ -137,8 +135,6 @@ const TvForm = (props) => {
                     handlePageNumber={props.handlePageNumber}
                 />
             }
-
-
         </div>
     )
 }

@@ -7,7 +7,6 @@ import MovieLists from './MovieLists'
 import Loading from '../Loading'
 import Pagination from '../Pagination'
 
-
 const getStyles = makeStyles(theme => ({
     optionBox: {
         width: '100%',

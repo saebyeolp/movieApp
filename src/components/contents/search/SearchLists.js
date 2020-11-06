@@ -32,7 +32,6 @@ const getStyles = makeStyles(theme => ({
     }
 }))
 
-
 const SearchLists = (props) => {
 
     const classes = getStyles()
