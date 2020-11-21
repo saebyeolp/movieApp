@@ -77,9 +77,8 @@ const MovieOption = (props) => {
 
             <div className={classes.listBox}>
                 {   
-                    !props.firstPage ? '' :
                     props.isLoading ? <Loading /> :
-                    props.movies.slice(0,10).map((movie, i) => {
+                    props.movies.map((movie, i) => {
                         return (
                             <MovieLists 
                                 key={i}
@@ -93,41 +92,7 @@ const MovieOption = (props) => {
                     })
                 }
 
-                {   props.firstPage ? '' :
-                    props.movies.slice(10,20).map((movie, i) => {
-                        return (
-                            <MovieLists 
-                                key={i}
-                                title={movie.title}
-                                poster_path={movie.poster_path}
-                                release_date={movie.release_date}
-                                popularity={movie.popularity}
-                                overview={movie.overview}
-                            />
-                        )
-                    })
-                }
             </div>
-            
-            {   props.isLoading ? '' :
-                <div className={classes.btnBox}>
-                    <Button
-                        className={props.firstPage ? classes.btnStyleBlocked : classes.btnStyle}
-                        style={{marginRight: 10}}
-                        disabled={props.firstPage ? true : false}
-                        onClick={props.handleFirstPage}
-                    >
-                        Go to the First Page
-                    </Button>
-                    <Button
-                        className={props.firstPage ? classes.btnStyle : classes.btnStyleBlocked}
-                        disabled={!props.firstPage ? true : false}
-                        onClick={props.handleSecondPage}
-                    >
-                        Go to the Second Page
-                    </Button>
-                </div>
-            }
 
             {   props.isLoading ? '' :
                 <Pagination 

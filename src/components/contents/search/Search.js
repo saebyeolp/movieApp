@@ -18,14 +18,11 @@ class Search extends Component {
             page: 1,
             totalPages: '',
             totalResults: '',
-            firstPage: true,
         }
         this.handleChangeQuery = this.handleChangeQuery.bind(this)
         this.handleChangeOption = this.handleChangeOption.bind(this)
         this.handleSearchFetch = this.handleSearchFetch.bind(this)
         this.handlePageNumber = this.handlePageNumber.bind(this)
-        this.handleFirstPage = this.handleFirstPage.bind(this)
-        this.handleSecondPage = this.handleSecondPage.bind(this)
     }
 
     fetchSearch= async (searchOpt, query, page) => {  
@@ -62,26 +59,17 @@ class Search extends Component {
 
     handleSearchFetch = (e) => {
         e.preventDefault()
-        this.setState({firstPage: true})
         this.fetchSearch(this.state.searchOpt, this.state.query, this.state.page)
     }
 
     handlePageNumber = (n) => {
-        this.setState({searchOpt: this.state.searchOpt, page: n, firstPage: true})
+        this.setState({searchOpt: this.state.searchOpt, page: n})
         this.fetchSearch(this.state.searchOpt, this.state.query, n)
-    }
-
-    handleFirstPage = () => {
-        this.setState({firstPage: true})
-    }
-
-    handleSecondPage = () => {
-        this.setState({firstPage: false})
     }
 
     render(){
         
-        const { searchResults, searchOpt, query, isLoading, input, page, totalPages, totalResults, firstPage } = this.state
+        const { searchResults, searchOpt, query, isLoading, input, page, totalPages, totalResults } = this.state
 
         return (
             <div style={{width: '100%', paddingBottom: 50}}>
@@ -95,13 +83,10 @@ class Search extends Component {
                         page={page}
                         totalPages={totalPages}
                         totalResults={totalResults}
-                        firstPage={firstPage}
                         handleChangeQuery={this.handleChangeQuery}
                         handleChangeOption={this.handleChangeOption}
                         handleSearchFetch={this.handleSearchFetch}
                         handlePageNumber={this.handlePageNumber}
-                        handleFirstPage={this.handleFirstPage}
-                        handleSecondPage={this.handleSecondPage}
                     />
                </Container>
             </div>
