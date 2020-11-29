@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Button } from '@material-ui/core/';
+import { makeStyles } from '@material-ui/core/';
 import Select from 'react-select'
 
 /* import components */

@@ -1,12 +1,13 @@
 import React from 'react'
 import { makeStyles, Button } from '@material-ui/core/';
+import logo from './../../img/logo.png'
 
 const getStyles = makeStyles(theme => ({
     headerWrapper: {
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      padding: 20,
+      padding: 10,
       backgroundColor: '#032541',
       boxSizing: 'border-box'
     },
@@ -21,10 +22,8 @@ const Header = () => {
 
     return (
         <div className={classes.headerWrapper}>
-            <Button
-                onClick={refreshPage}
-            >
-                <img src='//www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' alt='TMDB logo' height='50'/>
+            <Button onClick={refreshPage} >
+                <img src={logo} alt='logo' height='60'/>
             </Button>
         </div>
     )
