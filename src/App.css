@@ -50,6 +50,13 @@ table th, table td { vertical-align:middle; }
 /* Reset */
 /* source - https://cssreset.com/scripts/eric-meyer-reset-css/*/
 
+/* Font */
+/* source - https://fonts.google.com/specimen/Montserrat?sidebar.open=true&selection.family=Montserrat:wght@300*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body {
+	font-family: 'Montserrat', sans-serif!important;
+}
 
 .MuiPaper-elevation4 {
     box-shadow: none!important;
