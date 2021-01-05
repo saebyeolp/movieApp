@@ -7,7 +7,6 @@ import Movie from '../contents/movie/Movie'
 import Search from '../contents/search/Search'
 import Tvshow from '../contents/tvshow/Tvshow'
 
-
 const getStyles = makeStyles(theme => ({
     TabScreensWrapper: {
         width: '100%',

@@ -93,7 +93,6 @@ const TvForm = (props) => {
                 }
             </div>
 
-
             {   props.isLoading ? '' :
                 <Pagination 
                     page={props.page}
