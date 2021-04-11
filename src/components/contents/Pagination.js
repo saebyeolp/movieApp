@@ -8,7 +8,8 @@ const getStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignSelf: 'center',
-        paddingTop: 30
+        paddingTop: 30,
+        paddingBottom: 30
     },
     pageNum: {
         display: 'inline-block',
@@ -23,7 +24,6 @@ const getStyles = makeStyles(theme => ({
 
 const Pagination = (props) => {
     const classes = getStyles()
-    
 
     return (
         <div className={classes.pageBox}>
