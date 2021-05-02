@@ -9,8 +9,7 @@ export const getMovie = async (option, page) => {
   try {
     const response = await axios.get(url)
     const movies = response.data
-    return movies
-    
+    return movies   
   } catch (error) {
     throw error
   }
@@ -23,8 +22,7 @@ export const getSearch = async (searchOpt, query, page) => {
   try {
     const response = await axios.get(url)
     const searchResults = response.data
-    return searchResults
-    
+    return searchResults 
   } catch (error) {
     throw error
   }
